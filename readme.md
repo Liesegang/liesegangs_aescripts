@@ -8,7 +8,7 @@
 ## Add Shape Layers
 シェイプをワンクリックで追加します．よく使うプロパティが，エフェクトとして追加されます．
 
-![top-page](https://raw.githubusercontent.com/liesegang/liesegangs_aescripts/Documents/AddShapeLayers/demo.gif)
+![top-page](Documents/AddShapeLayers/demo.gif)
 
 図形は，
 
