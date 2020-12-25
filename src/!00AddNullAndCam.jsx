@@ -48,5 +48,7 @@
         Camera.parent = Null;
     }
 
+    app.beginUndoGroup("AddNullAndCam");
     AddNullCamera();
+    app.endUndoGroup("AddNullAndCam");
 })()

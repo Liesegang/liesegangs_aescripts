@@ -46,6 +46,7 @@
     selay = comp.selectedLayers;
     if(selay.length == 0) return; 
 
+    app.beginUndoGroup("ToggleFill");
     map(selay, function(layer, index){
         if(!(layer instanceof ShapeLayer)) return;
         var contents = layer.property("ADBE Root Vectors Group");
@@ -53,4 +54,5 @@
             obj.enabled ^= true;
         }, undefined, ["ADBE Vector Group", "ADBE Vectors Group", "ADBE Root Vectors Group"]);
     });
+    app.endUndoGroup("ToggleFill");
 })();
