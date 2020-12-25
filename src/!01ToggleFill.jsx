@@ -1,5 +1,5 @@
 // ToggleFill
-// Ver 1.0.0
+// Ver 1.1.0
 // Liesegang 2020 (yyama0704@gmail.com)
 'use strict';
 
@@ -54,5 +54,12 @@
             obj.enabled ^= true;
         }, undefined, ["ADBE Vector Group", "ADBE Vectors Group", "ADBE Root Vectors Group"]);
     });
-    app.endUndoGroup("ToggleFill");
+    map(selay, function(layer, index){
+        if(!(layer instanceof TextLayer)) return;
+        var textProp = layer.property("Source Text"); 
+        var textDocument = textProp.value;
+        textDocument.applyFill ^= true;
+        textProp.setValue(textDocument);
+    })
+    app.endUndoGroup();
 })();

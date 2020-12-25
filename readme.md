@@ -54,4 +54,14 @@
 + 1.0.1
   + カメラの中心位置がずれる問題を修正しました．
 
+#### !01ToggleFill
++ 1.1.0
+  + テキストレイヤーに対応
+  + UndoGroupに対応
+
+#### !02ToggleStroke
++ 1.1.0
+  + テキストレイヤーに対応
+  + UndoGroupに対応
+  
 ### ScriptUI Panels

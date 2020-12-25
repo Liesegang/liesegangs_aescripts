@@ -50,5 +50,5 @@
 
     app.beginUndoGroup("AddNullAndCam");
     AddNullCamera();
-    app.endUndoGroup("AddNullAndCam");
+    app.endUndoGroup();
 })()
