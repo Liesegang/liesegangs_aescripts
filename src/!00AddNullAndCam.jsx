@@ -1,4 +1,4 @@
-// ToggleStroke
+// AddNullAndCam
 // Ver 1.0.1
 // Liesegang 2020 (yyama0704@gmail.com)
 'use strict';
