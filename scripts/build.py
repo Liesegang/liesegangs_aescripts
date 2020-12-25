@@ -2,23 +2,26 @@
 # build release
 
 import os
+import sys
+import re
 import zipfile
 
-targetDir = "../src/"
-distDir = "../dist"
+targetDir = "src"
+distDir = "dist"
 name = "liesegangs_aescripts"
-version = "1.0.0"
 exclude = [".psd"]
 
-def main():
-  print("Version?")
-  print(">", end="")
-  version = input()
+def main(argv):
+  if(len(argv) < 2):
+    return
+
+  version = argv[1]
+  if(not re.match('^v(\d+\.)?(\d+\.)?(\*|\d+)$', version)):
+    return
 
   with zipfile.ZipFile(f'{distDir}/{name}_{version}.zip', 'w', zipfile.ZIP_DEFLATED) as zipFile:
     for root, dirs, files in os.walk(targetDir):
       for file in files:
-        print(os.path.splitext(file))
         if(os.path.splitext(file)[1] in exclude):
           continue
         zipFile.write(os.path.join(root, file),
@@ -29,4 +32,4 @@ def main():
         )
 
 if __name__ == "__main__":
-  main()
+  main(sys.argv)
