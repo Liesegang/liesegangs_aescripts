@@ -23,7 +23,7 @@ jobs:
 
     - name: build release file
       run: |
-        python3 scripts/build.py ${{GITHUB_REF##*/}}
+        python3 scripts/build.py ${GITHUB_REF##*/}
 
     - name: Create release
       id: create_release
@@ -36,6 +36,9 @@ jobs:
         draft: false
         prerelease: false
 
+    - name: Set release version
+      run: echo "release_version=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
     - name: Upload Release Asset
       id: upload-release-asset
       uses: actions/upload-release-asset@v1.0.1
@@ -43,6 +46,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/liesegangs_aescripts_${{GITHUB_REF##*/}}.zip
-        asset_name: liesegangs_aescripts_${GITHUB_REF##*/}.zip
+        asset_path: ./dist/liesegangs_aescripts_${{ env.release_version }}.zip
+        asset_name: liesegangs_aescripts_${{ env.release_version }}.zip
         asset_content_type: application/zip
