@@ -1,7 +1,9 @@
 # Liesegang's AE Scripts
 
 ## 導入方法
-.jsxbinまたは.jsxファイルとLiesegangフォルダを `(After Effectsがインストールされているフォルダ)\Support Files\Scripts\ScriptUI Panels` に入れてください．
+
+1. [リリース](https://github.com/Liesegang/liesegangs_aescripts/releases/)から最新の `liesegangs_aescripts.zip` をダウンロード
+2. `.jsxbin` または `.jsx` ファイルとLiesegangフォルダを `(After Effectsがインストールされているフォルダ)\Support Files\Scripts\ScriptUI Panels` に展開
 
 デフォルトの場所は `C:\Program Files\Adobe\Adobe After Effects <バージョン>\Support Files\Scripts\ScriptUI Panels` になります．
 
