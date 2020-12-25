@@ -5,7 +5,7 @@
 1. [リリース](https://github.com/Liesegang/liesegangs_aescripts/releases/)から最新の `liesegangs_aescripts.zip` をダウンロード
 2. zipを展開し，`src`フォルダ内のすべてのファイル，フォルダを`(After Effectsがインストールされているフォルダ)\Support Files\Scripts` にコピー
     + デフォルトの場所は `C:\Program Files\Adobe\Adobe After Effects <バージョン>\Support Files\Scripts\ScriptUI Panels` になります．
-3. 必要に応じて，`ShortcutScripts`内のスクリプトにショートカットキーを割り当てる．
+3. 必要に応じて，`!`から始まるスクリプトにショートカットキーを割り当てる．
     + [こちらのページ](https://sites.google.com/view/youuu4/script%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95ae#h.p_CRVg-gE4sgMp)を参考にしてください
 
 
