@@ -6,7 +6,7 @@ import sys
 import re
 import zipfile
 
-targetDir = "src"
+targetDir = "Scripts"
 distDir = "dist"
 name = "liesegangs_aescripts"
 exclude = [".psd"]

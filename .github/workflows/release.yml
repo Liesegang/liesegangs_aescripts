@@ -23,7 +23,7 @@ jobs:
 
     - name: build release file
       run: |
-        python3 scripts/build.py ${GITHUB_REF##*/}
+        python3 automation/build.py ${GITHUB_REF##*/}
 
     - name: Create release
       id: create_release
