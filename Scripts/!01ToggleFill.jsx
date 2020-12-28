@@ -12,10 +12,10 @@
         return ret;
     }
 
-    function mapAllProperties(contents, func){
-        if(contents.numProperties !== undefined) {
-            for(var i = 1; i <= contents.numProperties; i++){
-                func(contents.property(i));
+    function mapAllProperties(obj, func){
+        if(obj.numProperties !== undefined) {
+            for(var i = 1; i <= obj.numProperties; i++){
+                func(obj.property(i));
             }
         }
     }
@@ -30,11 +30,10 @@
         return ret;
     }
 
-    function walkObjects(contents, matchName, func, args, only){
-        $.writeln(contents.matchName);
-        if(contents.matchName == matchName) func(contents);
-        if(only === undefined || includes(only, contents.matchName)){
-            mapAllProperties(contents, function(x){
+    function walkObjects(obj, matchName, func, args, only){
+        if(obj.matchName == matchName) func(obj);
+        if(only === undefined || includes(only, obj.matchName)){
+            mapAllProperties(obj, function(x){
                 walkObjects(x, matchName, func, args, only);
             })
         }
