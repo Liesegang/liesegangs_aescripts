@@ -1,5 +1,5 @@
 // ToggleFill
-// Ver 1.1.0
+// Ver 1.1.1
 // Liesegang 2020 (yyama0704@gmail.com)
 'use strict';
 
