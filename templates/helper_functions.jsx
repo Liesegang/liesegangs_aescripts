@@ -23,6 +23,14 @@ Array.prototype.acc = function(func, initial){
   var arr = this;
   var ret;
 
+  if(arr.length === 0){
+    if(initial !== void 0){
+      return initial;
+    }else{
+      return void 0;
+    }
+  }
+
   if(func === void 0){
     func = function(x, y){return x + y;};
   }
@@ -30,7 +38,7 @@ Array.prototype.acc = function(func, initial){
   if(initial === void 0){
     ret = arr[0];
   }else{
-    ret = func(initial, ret[0]);
+    ret = func(initial, arr[0]);
   }
 
   var len = arr.length;
