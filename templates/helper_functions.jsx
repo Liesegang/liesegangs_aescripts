@@ -41,17 +41,14 @@ function mapAllProperties(contents, func){
 }
 
 function includes(arr, x){
-  var ret = false;
-  map(arr, function (xx){
-    if(xx == x){
-      ret = true;
-    }
-  })
-  return ret;
+  for(var i = 0; i < arr.length; i++){
+    if(x === arr[i]) return true;
+  }
+  return false;
 }
 
 function walkObject(obj, matchName, func, args, only){
-  if(obj.matchName == matchName) func(obj);
+  if(obj.matchName === matchName) func(obj);
   if(only === undefined || includes(only, obj.matchName)){
     mapAllProperties(obj, function(x){
       walkObject(x, matchName, func, args, only);

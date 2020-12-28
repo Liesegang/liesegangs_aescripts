@@ -3,62 +3,63 @@
 // Liesegang 2020 (yyama0704@gmail.com)
 'use strict';
 
-(function (){
-    function map(arr, func){
-        var ret = [];
-        for(var i = 0; i < arr.length; i++){
-            ret.push(func(arr[i], i));
-        }
-        return ret;
+(function () {
+  function map(arr, func) {
+    var ret = [];
+    for (var i = 0; i < arr.length; i++) {
+      ret.push(func(arr[i], i));
     }
+    return ret;
+  }
 
-    function mapAllProperties(obj, func){
-        if(obj.numProperties !== undefined) {
-            for(var i = 1; i <= obj.numProperties; i++){
-                func(obj.property(i));
-            }
-        }
+  function mapAllProperties(obj, func) {
+    if (obj.numProperties !== undefined) {
+      for (var i = 1; i <= obj.numProperties; i++) {
+        func(obj.property(i));
+      }
     }
+  }
 
-    function includes(arr, x){
-        var ret = false;
-        map(arr, function (xx){
-            if(xx == x){
-                ret = true;
-            }
-        })
-        return ret;
+  function includes(arr, x){
+    for(var i = 0; i < arr.length; i++){
+      if(x === arr[i]) return true;
     }
+    return false;
+  }
 
-    function walkObjects(obj, matchName, func, args, only){
-        if(obj.matchName == matchName) func(obj);
-        if(only === undefined || includes(only, obj.matchName)){
-            mapAllProperties(obj, function(x){
-                walkObjects(x, matchName, func, args, only);
-            })
-        }
+  function walkObjects(obj, matchName, func, args, only) {
+    if (obj.matchName === matchName) func(obj);
+    if (only === undefined || includes(only, obj.matchName)) {
+      mapAllProperties(obj, function (x) {
+        walkObjects(x, matchName, func, args, only);
+      })
     }
+  }
 
-    comp = app.project.activeItem;
-    if(comp == null) return;
+  var comp = app.project.activeItem;
+  if (comp === null) return;
 
-    selay = comp.selectedLayers;
-    if(selay.length == 0) return; 
+  var layers = comp.selectedLayers;
+  if (layers.length == 0) return;
 
-    app.beginUndoGroup("ToggleFill");
-    map(selay, function(layer, index){
-        if(!(layer instanceof ShapeLayer)) return;
+  app.beginUndoGroup("ToggleFill");
+  map(layers, function (layer, index) {
+    switch (true) {
+      case (layer instanceof ShapeLayer):
         var contents = layer.property("ADBE Root Vectors Group");
-        walkObjects(contents, "ADBE Vector Graphic - Fill", function(obj){
-            obj.enabled ^= true;
+        walkObjects(contents, "ADBE Vector Graphic - Fill", function (obj) {
+          obj.enabled ^= true;
         }, undefined, ["ADBE Vector Group", "ADBE Vectors Group", "ADBE Root Vectors Group"]);
-    });
-    map(selay, function(layer, index){
-        if(!(layer instanceof TextLayer)) return;
-        var textProp = layer.property("Source Text"); 
+        break;
+      case (layer instanceof TextLayer):
+        var textProp = layer.property("Source Text");
         var textDocument = textProp.value;
         textDocument.applyFill ^= true;
         textProp.setValue(textDocument);
-    })
-    app.endUndoGroup();
+        break;
+      default:
+        break;
+    }
+  });
+  app.endUndoGroup();
 })();
