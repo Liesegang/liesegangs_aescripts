@@ -7,27 +7,30 @@
   Array.prototype.map = function(func){
     var arr = this;
     var ret = [];
-    for(var i = 0; i < arr.length; i++){
+    var len = arr.length;
+    for(var i = 0; i < len; i++){
         ret.push(func(arr[i], i));
     }
     return ret;
-  }
+  };
 
   Array.prototype.includes = function(x){
     var arr = this;
-    for(var i = 0; i < arr.length; i++){
+    var len = arr.length;
+    for(var i = 0; i < len; i++){
       if(x === arr[i]) return true;
     }
     return false;
-  }
+  };
 
-  function mapAllProperties(obj, func) {
-    if (obj.numProperties !== void 0) {
-      for (var i = 1; i <= obj.numProperties; i++) {
+  function mapAllProperties(obj, func){
+    if(obj.numProperties !== void 0) {
+      var len = obj.numProperties;
+      for(var i = 1; i <= len; i++){
         func(obj.property(i));
       }
     }
-  }
+  };
 
   function walkObjects(obj, matchName, func, args, only) {
     if (obj.matchName === matchName) func(obj);
@@ -36,7 +39,7 @@
         walkObjects(x, matchName, func, args, only);
       })
     }
-  }
+  };
 
   var comp = app.project.activeItem;
   if (comp === null) return;

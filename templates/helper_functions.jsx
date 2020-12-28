@@ -2,7 +2,8 @@
 Array.prototype.map = function(func){
   var arr = this;
   var ret = [];
-  for(var i = 0; i < arr.length; i++){
+  var len = arr.length;
+  for(var i = 0; i < len; i++){
       ret.push(func(arr[i], i));
   }
   return ret;
@@ -11,7 +12,8 @@ Array.prototype.map = function(func){
 Array.prototype.filter = function(func){
   var arr = this;
   var ret = [];
-  for(var i = 0; i < arr.length; i++){
+  var len = arr.length;
+  for(var i = 0; i < len; i++){
     if(func(arr[i])) ret.push(arr[i]);
   }
   return ret;
@@ -31,7 +33,8 @@ Array.prototype.acc = function(func, initial){
     ret = func(initial, ret[0]);
   }
 
-  for(var i = 1; i < arr.length; i++){
+  var len = arr.length;
+  for(var i = 1; i < len; i++){
     ret = func(ret, arr[i]);
   }
   return ret;
@@ -39,7 +42,8 @@ Array.prototype.acc = function(func, initial){
 
 Array.prototype.includes = function(x){
   var arr = this;
-  for(var i = 0; i < arr.length; i++){
+  var len = arr.length;
+  for(var i = 0; i < len; i++){
     if(x === arr[i]) return true;
   }
   return false;
@@ -49,7 +53,8 @@ Array.prototype.includes = function(x){
 // For AE Objects
 function mapAllProperties(obj, func){
   if(obj.numProperties !== void 0) {
-    for(var i = 1; i <= obj.numProperties; i++){
+    var len = obj.numProperties;
+    for(var i = 1; i <= len; i++){
       func(obj.property(i));
     }
   }
