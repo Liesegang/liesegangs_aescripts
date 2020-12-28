@@ -82,3 +82,19 @@ function printMatchNameTree(obj, depth){
 
   mapAllProperties(obj, function (x){printMatchNameTree(x, depth+1);});
 }
+
+function assert(a, b){
+  if(b === void 0){
+    if(a){
+      $.writeln("OK");
+    }else{
+      $.writeln("Error!");
+    }
+    return;
+  }
+
+  if(a instanceof Array){
+    assert(a.toString() == b.toString());
+    return;
+  }
+}
