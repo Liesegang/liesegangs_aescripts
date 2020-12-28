@@ -105,4 +105,6 @@ function assert(a, b){
     assert(a.toString() == b.toString());
     return;
   }
+
+  $.writeln("Error!");
 }

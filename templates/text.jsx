@@ -22,6 +22,7 @@
   assert([].acc(void 0, 4) === 4);
   assert([].acc(function(a, b){return a + b;}) === void 0);
   assert([].acc(function(a, b){return a + b;}, 4) === 4);
+  assert(["a", "b", "c"].acc(function(a, b){return b + a;}, "d") === "cbad");
 
   //Includes
   $.writeln("Includes");
