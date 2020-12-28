@@ -4,32 +4,34 @@
 'use strict';
 
 (function () {
-  function map(arr, func) {
+  Array.prototype.map = function(func){
+    var arr = this;
     var ret = [];
-    for (var i = 0; i < arr.length; i++) {
-      ret.push(func(arr[i], i));
+    for(var i = 0; i < arr.length; i++){
+        ret.push(func(arr[i], i));
     }
     return ret;
   }
 
-  function mapAllProperties(obj, func) {
-    if (obj.numProperties !== undefined) {
-      for (var i = 1; i <= obj.numProperties; i++) {
-        func(obj.property(i));
-      }
-    }
-  }
-
-  function includes(arr, x){
+  Array.prototype.includes = function(x){
+    var arr = this;
     for(var i = 0; i < arr.length; i++){
       if(x === arr[i]) return true;
     }
     return false;
   }
 
+  function mapAllProperties(obj, func) {
+    if (obj.numProperties !== void 0) {
+      for (var i = 1; i <= obj.numProperties; i++) {
+        func(obj.property(i));
+      }
+    }
+  }
+
   function walkObjects(obj, matchName, func, args, only) {
     if (obj.matchName === matchName) func(obj);
-    if (only === undefined || includes(only, obj.matchName)) {
+    if (only === void 0 || only.includes(obj.matchName)) {
       mapAllProperties(obj, function (x) {
         walkObjects(x, matchName, func, args, only);
       })
@@ -43,13 +45,13 @@
   if (layers.length == 0) return;
 
   app.beginUndoGroup("ToggleFill");
-  map(layers, function (layer, index) {
+  layers.map(function (layer, index) {
     switch (true) {
       case (layer instanceof ShapeLayer):
         var contents = layer.property("ADBE Root Vectors Group");
         walkObjects(contents, "ADBE Vector Graphic - Fill", function (obj) {
           obj.enabled ^= true;
-        }, undefined, ["ADBE Vector Group", "ADBE Vectors Group", "ADBE Root Vectors Group"]);
+        }, void 0, ["ADBE Vector Group", "ADBE Vectors Group", "ADBE Root Vectors Group"]);
         break;
       case (layer instanceof TextLayer):
         var textProp = layer.property("Source Text");
