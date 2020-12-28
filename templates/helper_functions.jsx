@@ -45,6 +45,7 @@ Array.prototype.includes = function(x){
   return false;
 };
 
+
 // For AE Objects
 function mapAllProperties(obj, func){
   if(obj.numProperties !== void 0) {
@@ -62,3 +63,17 @@ function walkObjects(obj, matchName, func, args, only) {
     })
   }
 };
+
+
+// For Development
+function printMatchNameTree(obj, depth){
+  if(obj.matchName === void 0) return;
+
+  if(depth === void 0) depth = 0;
+  for(var i = 0; i < depth; i++){
+    $.write("  ");
+  }
+  $.writeln(obj.matchName);
+
+  mapAllProperties(obj, function (x){printMatchNameTree(x, depth+1);});
+}
