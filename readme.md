@@ -32,6 +32,21 @@
 
 扇型，環状扇型のみ，境界線に非対応です．
 
+### Utility Tools
+シェイプ関係の便利ツールをまとめたパネルです。まだ"Disassemble Repeater"しかありません。
+
+#### Disassemble Repeater
+シェイプレイヤーのリピーターで複製したオブジェクトを、個別のレイヤーとして分解します。リピーターの各要素に時間差をつけたアニメーションを施したいときに使うことを想定しています。
+時間をずらすためには、[Motion Tools](https://motiondesign.school/products/motion-tools/)、[Rift](https://aescripts.com/rift/)、[UtilityBox](https://voxyde.gumroad.com/l/VFKbZ)などが使えます。
+とくにRiftは時間差に対するイーズなど細かい設定ができて便利です。
+
+実際行われるのは、シェイプレーヤーをコピー数分複製し、コピー数を1にした後、オフセットをそれぞれに設定します。
+
+![](documents/Utility%20Tools/Disassemble%20Repeater%20preview.gif)
+
+リピーターが多重に掛けられている場合も複数回実行することで対応できます。
+![](documents/Utility%20Tools/Disassemble%20Repeater%20preview%20multi%20dimension.gif)
+
 ### ShortcutScripts
 ショートカットキーを割り当てることを前提に作ったスクリプトです．
 本来After Effectsではショートカットキーを割り当てられない操作(ヌルとそれを親としたカメラを，ショートカットキーで追加したいなど)にショートカットキーを割り当てるときに使います．
